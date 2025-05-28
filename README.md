@@ -45,7 +45,7 @@ secure-chat-app/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/secure-chat-app.git
+git clone https://github.com/Panda-0x01/CyberChat.git
 cd secure-chat-app
 ```
 
