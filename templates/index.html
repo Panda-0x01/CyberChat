@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypted Chat App</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="login-box">
+                <h1>🔐 Encrypted Chat</h1>
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Enter your username" maxlength="20">
+                </div>
+                <button id="join-btn" class="btn primary">Join Chat</button>
+                <div class="encryption-info">
+                    <p>🔒 All messages are end-to-end encrypted</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="chat-container">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div class="user-info">
+                        <div class="user-avatar">👤</div>
+                        <span id="current-username"></span>
+                    </div>
+                    
+                    <div class="room-section">
+                        <h3>🌍 Public Chat</h3>
+                        <div class="room-item active" data-room="public">
+                            <span>Public Room</span>
+                            <span class="room-status">🟢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="room-section">
+                        <h3>👥 Groups</h3>
+                        <div class="group-controls">
+                            <button id="create-group-btn" class="btn secondary small">Create Group</button>
+                        </div>
+                        <div id="group-list"></div>
+                    </div>
+                    
+                    <div class="encryption-status">
+                        <div class="status-indicator">
+                            <span class="status-dot"></span>
+                            <span>Encrypted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Area -->
+                <div class="chat-area">
+                    <div class="chat-header">
+                        <h2 id="current-room-name">Public Chat</h2>
+                        <div class="chat-actions">
+                            <button id="leave-group-btn" class="btn danger small">Leave Group</button>
+                        </div>
+                    </div>
+                    
+                    <div id="messages-container" class="messages"></div>
+                    
+                    <div class="message-input-container">
+                        <div class="encryption-toggle">
+                            <label>
+                                <input type="checkbox" id="encrypt-toggle" checked>
+                                <span>🔐 Encrypt</span>
+                            </label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="message-input" placeholder="Type your message..." maxlength="500">
+                            <button id="send-btn" class="btn primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Group Modal -->
+        <div id="create-group-modal" class="modal">
+            <div class="modal-content">
+                <h3>Create New Group</h3>
+                <div class="form-group">
+                    <input type="text" id="group-name" placeholder="Group name" maxlength="30">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="group-password" placeholder="Password (optional)">
+                </div>
+                <div class="modal-actions">
+                    <button id="create-group-confirm" class="btn primary">Create</button>
+                    <button id="create-group-cancel" class="btn secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Group Modal -->
+        <div id="join-group-modal" class="modal">
+            <div class="modal-content">
+                <h3>Join Group</h3>
+                <p id="join-group-name"></p>
+                <div class="form-group">
+                    <input type="password" id="join-group-password" placeholder="Enter password (if required)">
+                </div>
+                <div class="modal-actions">
+                    <button id="join-group-confirm" class="btn primary">Join</button>
+                    <button id="join-group-cancel" class="btn secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="../static/crypto.js"></script>
+    <script src="../static/script.js"></script>
+</body>
+</html>
